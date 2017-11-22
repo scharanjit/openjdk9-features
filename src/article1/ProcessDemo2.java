@@ -1,4 +1,4 @@
-package article1.processAPI;
+package article1;
 
 import java.time.Duration;
 import java.time.Instant;
@@ -6,6 +6,8 @@ import java.time.Instant;
 public class ProcessDemo2 {
 
     public static void main(String[] args) {
+        System.out.println("Total Process Running Now: "+ProcessHandle.allProcesses().count());
+
         ProcessHandle.allProcesses()
                 .filter(ph -> ph.info().command().isPresent())
                 .limit(10)
@@ -13,8 +15,8 @@ public class ProcessDemo2 {
     }
 
     static void dumpProcessInfo(ProcessHandle ph) {
-        System.out.println("PROCESS INFORMATION");
-        System.out.println("===================");
+        System.out.println("=PROCESS INFORMATION=");
+        System.out.println("=====================");
         System.out.printf("Process id: %d%n", ph.pid());
         ProcessHandle.Info info = ph.info();
         System.out.printf("Command: %s%n", info.command().orElse(""));
